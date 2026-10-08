@@ -114,10 +114,7 @@ const personEditorValue = {
         ]
       );
 
-console.log(
-  "CatVTON prediction:",
-  JSON.stringify(prediction, null, 2)
-);
+
 
       const firstResult = Array.isArray(prediction.data)
         ? prediction.data[0]

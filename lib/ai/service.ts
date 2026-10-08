@@ -12,7 +12,7 @@ export async function generateTryOn(
   request: TryOnRequest
 ): Promise<TryOnResult> {
   const providerName =
-    process.env.TRYON_PROVIDER || "mock";
+    process.env.TRYON_PROVIDER || "unconfigured";
 
   const provider = providers[providerName];
 

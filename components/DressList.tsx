@@ -1,14 +1,11 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 export default function DressList() {
-  const [dresses, setDresses] = useState<any[]>([]);
-
-  useEffect(() => {
-    loadDresses();
-  }, []);
+  const [dresses, setDresses] = useState<{ id: number; name: string; image: string; price: number }[]>([]);
 
   async function loadDresses() {
     const { data } = await supabase
@@ -18,6 +15,12 @@ export default function DressList() {
 
     if (data) setDresses(data);
   }
+
+  useEffect(() => {
+    void Promise.resolve().then(loadDresses);
+  }, []);
+
+
 
 async function deleteDress(id: number, image: string) {
   if (!confirm("Delete this dress?")) return;
